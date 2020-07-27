@@ -7,6 +7,14 @@ from rest_framework.permissions import BasePermission
 from api.models import Grade
 
 
+class IsUserAdmin(BasePermission):
+    """Admin permission"""
+
+    def has_permission(self, request, view):
+        """Allow to do actions only if the user is admin"""
+        return request.user.is_admin
+
+
 class IsTeacherInCharge(BasePermission):
     """Allow to add students only if he/she is teacher in charge"""
 
@@ -22,7 +30,6 @@ class IsTeacherInCharge(BasePermission):
                 pk=data['grade'],
                 in_charge=request.user
             )
-        except Grade.DoesNotExist:
+        except (Grade.DoesNotExist, KeyError) as Error:
             return False
         return True
-

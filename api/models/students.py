@@ -20,4 +20,8 @@ class Student(UtilitiesModel):
     is_active= models.BooleanField(default=True)
 
     def __str__(self):
-        return self.username
+        return f'{self.first_name} {self.last_name}'
+
+    def get_full_name(self):
+        return f'{self.first_name} {self.last_name}'
+

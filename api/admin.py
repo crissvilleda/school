@@ -7,8 +7,8 @@ from api.models import User, Grade, Course
 
 
 class UserAdmin(admin.ModelAdmin):
-    fields = ('username', 'first_name', 'last_name', 'email', 'is_admin')
-    list_display = ('username', 'first_name', 'last_name', 'email', 'is_admin')
+    fields = ('username', 'first_name', 'last_name', 'email', 'is_admin','is_verify')
+    list_display = ('username', 'first_name', 'last_name', 'email', 'is_admin', 'is_verify')
     list_filter = ('is_active', 'is_admin', 'is_verify')
     search_fields = ('username', 'first_name', 'last_name')
 
@@ -25,14 +25,12 @@ class GradeAdmin(admin.ModelAdmin):
 admin.site.register(Grade, GradeAdmin)
 
 
-
-
 class CourseAdmin(admin.ModelAdmin):
-    fields = ('slug_name', 'name', 'description',
-              'is_limit', 'student_limit', 'teacher', 'grade', 'schedule')
+    fields = ('slug_name', 'name', 'description','is_limited',
+              'student_limit', 'teacher', 'grade', 'schedule')
     list_display = ('name', 'grade', 'teacher', 'schedule')
     search_fields = ('slug_name', 'name', 'description')
-    list_filter = ('is_limit', 'is_active', 'schedule')
+    list_filter = ('is_limited', 'is_active', 'schedule')
 
 
 admin.site.register(Course, CourseAdmin)

@@ -10,9 +10,8 @@ class Course(UtilitiesModel):
     slug_name = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=250,
-                                   blank=True,
                                    null=True)
-    is_limit = models.BooleanField(default=False)
+    is_limited = models.BooleanField(default=False)
     student_limit = models.PositiveIntegerField(default=0)
     teacher = models.ForeignKey('api.User',
                                 on_delete=models.CASCADE,
@@ -24,7 +23,7 @@ class Course(UtilitiesModel):
     students = models.ManyToManyField('api.Student',
                                       related_name='courses',
                                       )
-    schedule = models.DateTimeField(blank=True, null=True)
+    schedule = models.CharField(max_length=50, blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

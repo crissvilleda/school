@@ -27,4 +27,4 @@ class User(AbstractUser, UtilitiesModel):
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     def __str__(self):
-        return self.username
+        return f'{self.first_name} {self.last_name}'
