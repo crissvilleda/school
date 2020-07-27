@@ -17,11 +17,11 @@ class Student(UtilitiesModel):
     parents = models.CharField(max_length=200)
     is_assigned = models.BooleanField(default=False)
     annotations = models.TextField(blank=True, null=True)
-    is_active= models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
+    @property
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
-

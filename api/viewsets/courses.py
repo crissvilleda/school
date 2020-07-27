@@ -10,9 +10,10 @@ from rest_framework.viewsets import ModelViewSet
 from api.models import Course
 # permission
 from api.permissions.users import IsUserAdmin
-from api.serializers.courses import AssignSerializer
+from api.serializers.courses import AssignSerializer, AddScoreSerializer
 # Serialiser
 from api.serializers.courses import CoursesModelSerializer
+from api.serializers.scores import ScoreModelSerializer
 
 
 class CourseModelViewSet(ModelViewSet):
@@ -42,11 +43,23 @@ class CourseModelViewSet(ModelViewSet):
         """This functions allow to assign students into de course
         """
         data = request.data
-        data['course'] = kwargs['slug_name']
-        serializer = AssignSerializer(data=request.data)
+        data['course_name'] = kwargs['slug_name']
+        serializer = AssignSerializer(data=data)
         serializer.is_valid(raise_exception=True)
         student = serializer.save()
-        data ={ 'student':student.get_full_name(),
-                'message':'Congratulations, The student has been successfully assigned'
+        data = {'student': student.get_full_name,
+                'message': 'Congratulations, The student has been successfully assigned'
                 }
-        return Response(data=data,status=status.HTTP_200_OK)
+        return Response(data=data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['post'])
+    def add_score(self, request, *args, **kwargs):
+        """this function handle the request of add score to one course"""
+        data = request.data
+        data['course_name'] = kwargs['slug_name']
+        serializer = AddScoreSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        score = serializer.save()
+        data = ScoreModelSerializer(score).data
+        data['message'] = 'Score has been successfully assigned'
+        return Response(data=data, status=status.HTTP_201_CREATED)

@@ -16,5 +16,5 @@ class Score(UtilitiesModel):
                                on_delete=models.CASCADE,
                                related_name='get_scores'
                                )
-    score_number = models.FloatField()
+    test_score = models.FloatField()
     observations = models.TextField(blank=True, null=True)

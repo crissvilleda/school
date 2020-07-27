@@ -27,4 +27,4 @@ class Course(UtilitiesModel):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.slug_name
+        return self.name

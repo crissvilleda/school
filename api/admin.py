@@ -27,7 +27,7 @@ admin.site.register(Grade, GradeAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
     fields = ('slug_name', 'name', 'description','is_limited',
-              'student_limit', 'teacher', 'grade', 'schedule')
+              'student_limit', 'teacher', 'grade', 'schedule','students')
     list_display = ('name', 'grade', 'teacher', 'schedule')
     search_fields = ('slug_name', 'name', 'description')
     list_filter = ('is_limited', 'is_active', 'schedule')
