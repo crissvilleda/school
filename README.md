@@ -13,9 +13,9 @@ CRUD cursos y alumnos
 Autenticación
 
 # Resultados:
-Cantidad de alumnos registrados por curso
-Promedio de notas
-Por alumno en cada uno de sus cursos
-Por curso sobre el total de alumnos
-El alumno no debe poder ver ni realizar ningua acción que le corresponde al administrador
+-Cantidad de alumnos registrados por curso
+-Promedio de notas
+-Por alumno en cada uno de sus cursos
+-Por curso sobre el total de alumnos
+-El alumno no debe poder ver ni realizar ningua acción que le corresponde al administrador
 
