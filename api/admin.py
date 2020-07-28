@@ -32,8 +32,8 @@ class CourseAdmin(admin.ModelAdmin):
 
 class StudentAdmin(admin.ModelAdmin):
     """Student Class in admin site"""
-    fields = ('username', 'first_name', 'last_name', 'parents', 'annotations')
-    list_display = ('username', 'first_name', 'last_name', 'parents', 'is_assigned')
+    fields = ('username', 'first_name', 'last_name', 'parents','grade', 'annotations')
+    list_display = ('username', 'first_name', 'last_name', 'parents', 'is_assigned','grade')
     search_fields = ('username', 'first_name', 'last_name', 'parents')
     list_filter = ('is_assigned', 'is_active')
 

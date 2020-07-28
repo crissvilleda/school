@@ -39,5 +39,5 @@ class StudentsReportSerializer(serializers.Serializer):
         """Add value 0 if the score is null or None"""
         if data.scores_avg is None:
             data.scores_avg = 0
-        score = data.scores_avg
+        score = round(data.scores_avg,2)
         return score
