@@ -49,7 +49,7 @@ class StudentModelViewSet(viewsets.ModelViewSet):
         # validate if the student exists
         student = get_object_or_404(Student, username=username, is_active=True)
         query = student.courses.all()
-        if not query.exits():
+        if not query.exists():
             pass
         query = [x for x in query]
         serializer = CourseDetailSerializer(query,

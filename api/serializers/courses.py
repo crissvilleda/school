@@ -38,7 +38,6 @@ class CoursesModelSerializer(serializers.ModelSerializer):
     grade_name = serializers.StringRelatedField(read_only=True, source='grade')
     teacher_name = serializers.StringRelatedField(read_only=True, source='teacher')
     students = serializers.StringRelatedField(many=True, read_only=True)
-    scores = serializers.SerializerMethodField()
 
     class Meta:
         """Meta Courses"""
@@ -46,7 +45,7 @@ class CoursesModelSerializer(serializers.ModelSerializer):
         fields = (
             'slug_name', 'name', 'description', 'grade', 'grade_name',
             'is_limited', 'student_limit', 'schedule', 'teacher', 'teacher_name',
-            'students', 'scores'
+            'students'
         )
         extra_kwargs = {
             'is_limited': {'required': True},
