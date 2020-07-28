@@ -16,7 +16,7 @@ from api.serializers import StudentModelSerializer
 from api.serializers.courses import CourseDetailSerializer
 
 
-class StudentModelViewSet(viewsets.ModelViewSet):
+class StudentModelViewset(viewsets.ModelViewSet):
     """Student ViewSets"""
     queryset = Student.objects.filter(is_active=True)
     serializer_class = StudentModelSerializer

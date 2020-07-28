@@ -11,7 +11,7 @@ from api.serializers import (UserSignUpSerializer, UserModelSerializer,
                              UserLoginSerializer, UserAccountVerificationSerializer)
 
 
-class UserViewsets(viewsets.GenericViewSet):
+class UserViewset(viewsets.GenericViewSet):
     """User ViewSets
         this viwsets handle de signup and login of the users
     """
