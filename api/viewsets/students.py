@@ -24,7 +24,7 @@ class StudentModelViewset(viewsets.ModelViewSet):
 
     def get_permissions(self):
         """handle all permission"""
-        permissions = [IsAuthenticated]
+        permissions = []
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
             permissions.append(IsTeacherInCharge)
         elif self.action == 'courses':

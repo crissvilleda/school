@@ -106,4 +106,7 @@ class AssignSerializer(serializers.Serializer):
         student = self.context['student']
         course.students.add(student)
         course.save()
+        if not Student.is_assigned:
+            Student.is_assigned = True
+            Student.save()
         return student

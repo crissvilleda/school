@@ -16,7 +16,7 @@ class ReportsViewset(viewsets.GenericViewSet):
     """Reports Serializer"""
 
     @action(detail=False, methods=['get'])
-    def courses(self):
+    def courses(self, request):
         """Generate the following reports:
             --Number of registered students per course
             --Average score per course over total students
@@ -30,7 +30,7 @@ class ReportsViewset(viewsets.GenericViewSet):
         return Response(data=data, status=status.HTTP_200_OK)
 
     @action(detail=False, methods=['get'])
-    def students(self):
+    def students(self, request):
         """Generate the following reports:
             --Average score per student in each of their courses
         """
