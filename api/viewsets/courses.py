@@ -1,4 +1,5 @@
-"""Course viewset"""
+"""Course ViewSets"""
+
 # rest_framework
 from rest_framework import status
 from rest_framework.decorators import action
@@ -10,14 +11,14 @@ from rest_framework.viewsets import ModelViewSet
 from api.models import Course
 # permission
 from api.permissions.users import IsUserAdmin
-from api.serializers.courses import AssignSerializer, AddScoreSerializer
-# Serialiser
+from api.serializers.courses import AssignSerializer
+# Serializer
 from api.serializers.courses import CoursesModelSerializer
-from api.serializers.scores import ScoreModelSerializer
+from api.serializers.scores import AddScoreSerializer, ScoreModelSerializer
 
 
 class CourseModelViewSet(ModelViewSet):
-    """Coruse viewset"""
+    """Course ViewSets"""
     queryset = Course.objects.filter(is_active=True)
     serializer_class = CoursesModelSerializer
     lookup_field = 'slug_name'
@@ -25,13 +26,14 @@ class CourseModelViewSet(ModelViewSet):
     def get_permissions(self):
         """handle all permission"""
         permissions = [IsAuthenticated]
-        if self.action in ['create', 'update', 'partial_update', 'destroy', 'assign']:
+        if self.action in ['create', 'update', 'partial_update',
+                           'destroy', 'assign', 'add_score']:
             permissions.append(IsUserAdmin)
         return [permission() for permission in permissions]
 
     def destroy(self, request, *args, **kwargs):
         """rewrite the functions, instead of destroy
-        we will set Course.is_active = False.
+            we will set Course.is_active = False.
         """
         instance = self.get_object()
         instance.is_active = False
@@ -41,6 +43,7 @@ class CourseModelViewSet(ModelViewSet):
     @action(detail=True, methods=['post'])
     def assign(self, request, *args, **kwargs):
         """This functions allow to assign students into de course
+            only the administrator user can do it
         """
         data = request.data
         data['course_name'] = kwargs['slug_name']
@@ -54,7 +57,7 @@ class CourseModelViewSet(ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def add_score(self, request, *args, **kwargs):
-        """this function handle the request of add score to one course"""
+        """its function handles the request to add score to a student's test"""
         data = request.data
         data['course_name'] = kwargs['slug_name']
         serializer = AddScoreSerializer(data=data)

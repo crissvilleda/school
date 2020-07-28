@@ -1,6 +1,6 @@
 """User permission"""
 
-# rest_fremework
+# rest_framework
 from rest_framework.permissions import BasePermission
 
 # Model

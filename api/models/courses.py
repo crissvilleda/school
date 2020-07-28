@@ -7,6 +7,7 @@ from api.models.utilities import UtilitiesModel
 
 
 class Course(UtilitiesModel):
+    """Course class"""
     slug_name = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=250,

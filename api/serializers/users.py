@@ -10,15 +10,13 @@ from django.contrib.auth import password_validation, authenticate
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils import timezone
+# Rest_framework
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 
 # Models
 from api.models import User
-
-
-# Rest_framework
 
 
 class UserModelSerializer(serializers.ModelSerializer):
@@ -95,13 +93,12 @@ class UserSignUpSerializer(serializers.Serializer):
 
 
 class UserLoginSerializer(serializers.Serializer):
-    """User login Serializer
-    """
+    """User login Serializer"""
     email = serializers.CharField(max_length=50)
     password = serializers.CharField(min_length=8, max_length=50)
 
     def validate(self, data):
-        """validete que if the user exists in the database"""
+        """validate que if the user exists in the database"""
         user = authenticate(
             username=data['email'],
             password=data['password']

@@ -7,9 +7,7 @@ from api.models.utilities import UtilitiesModel
 
 
 class Student(UtilitiesModel):
-    """Student class.
-    Only extend the AbstractUser to add a few necessary fields
-    """
+    """Student Class"""
     username = models.CharField(max_length=100, unique=True)
     grade = models.ForeignKey('api.Grade', on_delete=models.CASCADE, related_name='get_students')
     first_name = models.CharField(max_length=150)

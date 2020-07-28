@@ -8,6 +8,7 @@ from api.models.utilities import UtilitiesModel
 
 
 class Grade(UtilitiesModel):
+    """Grade Class"""
     name = models.CharField(max_length=150,
                             unique=True
                             )

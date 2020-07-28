@@ -1,6 +1,6 @@
-"""User Viewsets"""
+"""User ViewSets"""
 
-# rest_framwork
+# rest_framework
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
@@ -12,7 +12,7 @@ from api.serializers import (UserSignUpSerializer, UserModelSerializer,
 
 
 class UserViewsets(viewsets.GenericViewSet):
-    """User viewsets
+    """User ViewSets
         this viwsets handle de signup and login of the users
     """
 
