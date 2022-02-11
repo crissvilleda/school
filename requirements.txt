@@ -53,7 +53,7 @@ paramiko==2.6.0
 pbr==5.4.5
 pexpect==4.6.0
 Pillow>=7.1.0
-protobuf==3.6.1
+protobuf==3.15.0
 pycairo==1.16.2
 pycodestyle==2.6.0
 pycparser==2.20
